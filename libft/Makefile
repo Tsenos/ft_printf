@@ -6,7 +6,7 @@
 #    By: timothy <timothy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 02:09:05 by timothy           #+#    #+#              #
-#    Updated: 2022/10/29 13:00:26 by timothy          ###   ########.fr        #
+#    Updated: 2024/01/13 19:29:08 by timothy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRCS =	ft_atoi.c			\
 		ft_strncmp.c		\
 		ft_memchr.c			\
 		ft_memcmp.c			\
-		ft_atoi.c
+		ft_atoi.c			\
+		ft_putchar_fd.c		\
+		ft_putnbr_fd.c		\
 
 NAME = libft.a
 OBJS = ${SRCS:c=o}
@@ -42,18 +44,18 @@ AR = ar rcs
 RM = rm -f
 
 %.o:		%.c
-			${CC} ${CC_FLAGS} -c $<
+			@${CC} ${CC_FLAGS} -c $<
 
 ${NAME}:	${OBJS}
-			${AR} $@ $?
+			@${AR} $@ $?
 
 all:		${NAME}
 
 clean:
-			${RM} ${OBJS}
+			@${RM} ${OBJS}
 
 fclean:		clean
-			${RM} ${NAME}
+			@${RM} ${NAME}
 
 re:			fclean all
 

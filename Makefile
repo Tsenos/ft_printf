@@ -3,19 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfavre <tfavre@student.42.fr>              +#+  +:+       +#+         #
+#    By: timothy <timothy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 16:50:43 by timothy           #+#    #+#              #
-#    Updated: 2022/12/05 17:55:26 by tfavre           ###   ########.fr        #
+#    Updated: 2024/01/14 18:18:10 by timothy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = ./libft/libft.a
 
 SRCS =	ft_printf.c		\
+		ft_utils.c		\
 
 NAME = libftprintf.a
-OBJS = ${SRCS:c=o}
+OBJS = ${SRCS:.c=.o}
 
 CC = gcc
 CC_FLAGS = -Wall -Werror -Wextra
@@ -23,25 +24,23 @@ CC_FLAGS = -Wall -Werror -Wextra
 AR = ar rcs
 RM = rm -f
 
-MAKE = make
-
 %.o:		%.c
-			${CC} ${CC_FLAGS} -c $<
+			@${CC} ${CC_FLAGS} -c $<
 
 ${NAME}:	${OBJS}
-			$(MAKE) all -C ./libft
-			cp libft/libft.a ${NAME}
-			${AR} $@ $?
+			@make all -C ./libft
+			@cp libft/libft.a ${NAME}
+			@${AR} $@ $?
 
 all:		${NAME}
 
 clean:
-			${MAKE} clean -C ./libft
-			${RM} ${OBJS}
+			@make clean -C ./libft
+			@${RM} ${OBJS}
 
 fclean:		clean
-			${MAKE} fclean -C ./libft
-			${RM} ${NAME}
+			@make fclean -C ./libft
+			@${RM} ${NAME}
 
 re:			fclean all
 
