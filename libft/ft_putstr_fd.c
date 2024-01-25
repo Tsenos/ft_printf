@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavre <tfavre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 14:02:27 by timothy           #+#    #+#             */
-/*   Updated: 2022/10/26 14:27:28 by tfavre           ###   ########.fr       */
+/*   Created: 2023/10/31 11:54:29 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/10 12:01:41 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,18 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	int	i;
+
+	i = 0;
+	while (s[i])
+		ft_putchar_fd(s[i++], fd);
 }
+
+/*int	main(void)
+{
+	char	str[] = "Hello how are you ?\n";
+	
+	ft_putstr_fd(str, 1);
+	printf("str after: %s\n", str);
+	return (0);
+}*/

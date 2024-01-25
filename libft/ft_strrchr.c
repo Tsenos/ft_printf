@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavre <tfavre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 09:04:59 by timothy           #+#    #+#             */
-/*   Updated: 2022/10/26 18:27:45 by tfavre           ###   ########.fr       */
+/*   Created: 2023/10/28 15:12:30 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/10 12:02:23 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,24 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int			len;
+	int	i;
 
-	len = ft_strlen(s);
-	while (len >= 0)
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		if ((char)c == s[len])
-			return ((char *)(s + len));
-		len--;
+		if (s[i] == (unsigned char)c)
+			return ((char *)s + i);
+		i--;
 	}
-	return (0);
+	return (NULL);
 }
+
+/*int	main(void)
+{
+	const char	*s = "there is so \0ma\0ny \0 \\0 in t\0his stri\0ng !\0\0\0\0";
+	int			c = '\0';
+
+	printf("ft_strrchr:\t\t%s\n", ft_strrchr(s, c));
+	printf("strrchr:\t\t%s", strrchr(s, c));
+	return (0);
+}*/

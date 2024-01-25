@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft.putchari.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 12:01:06 by timothy           #+#    #+#             */
-/*   Updated: 2024/01/10 12:01:38 by tifavre          ###   ########.fr       */
+/*   Created: 2024/01/25 11:28:39 by tifavre           #+#    #+#             */
+/*   Updated: 2024/01/25 11:28:52 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putchari(char c)
 {
-	unsigned int	nbr;
-
-	nbr = n;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		nbr *= -1;
-	}
-	if (nbr / 10)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd((nbr % 10 + 48), fd);
+	write(1, &c, 1);
+	return (1);
 }
-
-/*int	main(void)
-{
-	ft_putnbr_fd(-2147483648, 1);
-	return (0);
-}*/

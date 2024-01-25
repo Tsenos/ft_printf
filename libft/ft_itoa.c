@@ -3,49 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavre <tfavre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 17:05:08 by timothy           #+#    #+#             */
-/*   Updated: 2022/10/26 14:26:09 by tfavre           ###   ########.fr       */
+/*   Created: 2023/10/30 17:44:42 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/10 12:00:45 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_numlen(int n)
+static int	ft_len(long int n)
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
 	if (n <= 0)
 		len++;
-	while (n && ++len)
+	while (n != 0)
+	{
 		n /= 10;
+		len++;
+	}
 	return (len);
+}
+
+static void	ft_fillstr(char *str, long int n, int len, int i)
+{
+	while (len > i)
+	{
+		str[len - 1] = n % 10 + 48;
+		n /= 10;
+		len--;
+	}
 }
 
 char	*ft_itoa(int n)
 {
-	int			len;
-	char		*dst;
-	const char	*digits = "0123456789";
+	int		i;
+	int		len;
+	char	*str;
 
-	len = ft_numlen(n);
-	dst = malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (0);
-	dst[len] = 0;
-	if (n == 0)
-		dst[0] = '0';
-	if (n < 0)
-		dst[0] = '-';
-	while (n)
+	i = 0;
+	len = ft_len(n);
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	if (n == -2147483648)
 	{
-		if (n > 0)
-			dst[--len] = digits[n % 10];
-		else
-			dst[--len] = digits[n % 10 * -1];
-		n /= 10;
+		str[0] = '-';
+		str[1] = '2';
+		n = 147483648;
+		i = 2;
 	}
-	return (dst);
+	if (n < 0)
+	{
+		n *= -1;
+		str[i++] = '-';
+	}
+	ft_fillstr(str, n, len, i);
+	return (str);
 }
+
+/*int	main(void)
+{
+	printf("ft_itoa: %s\n", ft_itoa(-2147483648));
+	return (0);
+}*/

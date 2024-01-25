@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timothy <timothy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 09:39:22 by timothy           #+#    #+#             */
-/*   Updated: 2022/10/26 12:54:47 by timothy          ###   ########.fr       */
+/*   Created: 2023/10/28 16:34:38 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/10 12:01:17 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,26 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (n--)
+	const unsigned char	*s2;
+
+	s2 = s;
+	while (n-- > 0)
 	{
-		if (*(unsigned char *)s == (unsigned char)c)
-			return ((void *)s);
-		++s;
+		if (*s2 == (unsigned char)c)
+			return ((void *)s2);
+		s2++;
 	}
-	return (0);
+	return (NULL);
 }
+
+/*int	main(void)
+{
+	const char	*s = "abcde";
+	int			c = 'c';
+	size_t		n = 4;
+
+	printf("ft_memchr:\t%s\n", (char *)ft_memchr(s, c, n));
+	printf("memchr:\t\t%s\n", (char *)ft_memchr(s, c, n));
+
+	return (0);
+}*/

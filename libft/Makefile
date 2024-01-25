@@ -3,60 +3,83 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: timothy <timothy@student.42.fr>            +#+  +:+       +#+         #
+#    By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/29 02:09:05 by timothy           #+#    #+#              #
-#    Updated: 2024/01/13 19:29:08 by timothy          ###   ########.fr        #
+#    Created: 2023/10/23 11:42:00 by tifavre           #+#    #+#              #
+#    Updated: 2024/01/10 12:02:41 by tifavre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	ft_atoi.c			\
-		ft_bzero.c			\
-		ft_isalnum.c		\
-		ft_isalpha.c		\
-		ft_isascii.c		\
-		ft_isdigit.c		\
-		ft_memcpy.c			\
-		ft_memset.c			\
-		ft_strlen.c			\
-		ft_isprint.c		\
-		ft_memmove.c		\
-		ft_strlcpy.c		\
-		ft_strlcat.c		\
-		ft_toupper.c		\
-		ft_tolower.c		\
-		ft_strchr.c			\
-		ft_strrchr.c		\
-		ft_strncmp.c		\
-		ft_memchr.c			\
-		ft_memcmp.c			\
-		ft_atoi.c			\
-		ft_putchar_fd.c		\
-		ft_putnbr_fd.c		\
+SRCS	=	ft_isalpha.c	\
+			ft_isdigit.c	\
+			ft_isalnum.c	\
+			ft_isascii.c	\
+			ft_isprint.c	\
+			ft_strlen.c		\
+			ft_memset.c		\
+			ft_bzero.c		\
+			ft_memcpy.c		\
+			ft_memmove.c	\
+			ft_strlcpy.c	\
+			ft_strlcat.c	\
+			ft_toupper.c	\
+			ft_tolower.c	\
+			ft_strchr.c		\
+			ft_strrchr.c	\
+			ft_strncmp.c	\
+			ft_memchr.c		\
+			ft_memcmp.c		\
+			ft_strnstr.c	\
+			ft_atoi.c		\
+			ft_calloc.c		\
+			ft_strdup.c		\
+			ft_substr.c		\
+			ft_strjoin.c	\
+			ft_strtrim.c	\
+			ft_split.c		\
+			ft_itoa.c		\
+			ft_strmapi.c	\
+			ft_striteri.c	\
+			ft_putchar_fd.c	\
+			ft_putstr_fd.c	\
+			ft_putendl_fd.c	\
+			ft_putnbr_fd.c
 
-NAME = libft.a
-OBJS = ${SRCS:c=o}
+SRCSB	=	ft_lstnew_bonus.c		\
+			ft_lstadd_front_bonus.c	\
+			ft_lstsize_bonus.c		\
+			ft_lstlast_bonus.c		\
+			ft_lstadd_back_bonus.c	\
+			ft_lstdelone_bonus.c	\
+			ft_lstclear_bonus.c		\
+			ft_lstiter_bonus.c		\
+			ft_lstmap_bonus.c
 
-CC = gcc
-CC_FLAGS = -Wall -Werror -Wextra
+OBJS	=	${SRCS:.c=.o}
+OBJSB	=	${SRCSB:.c=.o}
+CC		=	gcc
+CCFLAGS	=	-Wall -Werror -Wextra
+NAME	= 	libft.a
+ARRCS	=	ar -rcs
+RM		=	rm -f
 
-AR = ar rcs
-RM = rm -f
+%.o: %.c
+	${CC} ${CCFLAGS} -c $< -o $@
 
-%.o:		%.c
-			@${CC} ${CC_FLAGS} -c $<
+all: ${NAME}
 
-${NAME}:	${OBJS}
-			@${AR} $@ $?
+${NAME}: ${OBJS}
+	${ARRCS} ${NAME} ${OBJS}
 
-all:		${NAME}
+bonus: ${NAME} ${OBJSB}
+	${ARRCS} ${NAME} ${OBJSB}
 
 clean:
-			@${RM} ${OBJS}
+	${RM} ${OBJS} ${OBJSB}
 
-fclean:		clean
-			@${RM} ${NAME}
+fclean: clean
+	${RM} ${NAME}
 
-re:			fclean all
+re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavre <tfavre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 13:26:37 by timothy           #+#    #+#             */
-/*   Updated: 2022/10/26 14:32:35 by tfavre           ###   ########.fr       */
+/*   Created: 2023/10/31 11:26:15 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/10 12:01:59 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,21 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	i = 0;
 	while (s[i])
 	{
-		f(i, &s[i]);
+		(*f)(i, &s[i]);
 		i++;
 	}
 }
+
+/*void	ft_func(unsigned int i, char *c)
+{
+	*c += i;
+}
+
+int	main(void)
+{
+	char	str[] = "1234";
+
+	ft_striteri(str, ft_func);
+	printf("ft_striteri: %s\n", str);
+	return (0);
+}*/

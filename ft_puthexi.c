@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_puthexi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 12:01:06 by timothy           #+#    #+#             */
-/*   Updated: 2024/01/10 12:01:38 by tifavre          ###   ########.fr       */
+/*   Created: 2024/01/13 19:50:07 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/25 11:32:00 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_puthexi(unsigned long long int n, int m)
 {
-	unsigned int	nbr;
+	unsigned long long int	nbr;
+	int						len;
 
+	len = 1;
 	nbr = n;
-	if (n < 0)
+	if (n / 16)
+		ft_puthexi(n / 16, m);
+	if (n % 16 < 10)
+		ft_putchari((n % 16 + 48));
+	else if (m == 120)
+		ft_putchari((n % 16 + 87));
+	else
+		ft_putchari((n % 16 + 55));
+	while (nbr / 16)
 	{
-		ft_putchar_fd('-', fd);
-		nbr *= -1;
+		len += 1;
+		nbr /= 16;
 	}
-	if (nbr / 10)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd((nbr % 10 + 48), fd);
+	return (len);
 }
-
-/*int	main(void)
-{
-	ft_putnbr_fd(-2147483648, 1);
-	return (0);
-}*/

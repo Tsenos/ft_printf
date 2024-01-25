@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavre <tfavre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 18:02:15 by tfavre            #+#    #+#             */
-/*   Updated: 2022/10/27 13:56:40 by tfavre           ###   ########.fr       */
+/*   Created: 2023/10/25 14:33:00 by tifavre           #+#    #+#             */
+/*   Updated: 2024/01/10 12:02:08 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,25 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = 0;
-	while (*src && (i + 1) < dstsize)
+	if (!dstsize)
+		return (ft_strlen(src));
+	while (src[i] && i < dstsize - 1)
 	{
-		*dst++ = *src++;
+		dst[i] = src[i];
 		i++;
 	}
-	if (i < dstsize)
-		*dst = 0;
-	while (*src++)
-		i++;
-	return (i);
+	dst[i] = 0;
+	return (ft_strlen(src));
 }
+
+/*int	main(void)
+{
+	char	*src = "1234567";
+	char	dst1[] = "abcde";
+	char	dst2[] = "abcde";
+	int		dstsize = 0;
+
+	printf("\nft:\t%lu\n", ft_strlcpy(dst1, src, dstsize));
+	printf(":\t%lu\n", strlcpy(dst2, src, dstsize));
+	return (0);
+}*/

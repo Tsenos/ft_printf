@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavre <tfavre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 14:13:54 by timothy           #+#    #+#             */
-/*   Updated: 2022/10/26 14:32:46 by tfavre           ###   ########.fr       */
+/*   Created: 2023/10/31 11:58:17 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/10 12:01:36 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,3 +17,11 @@ void	ft_putendl_fd(char *s, int fd)
 	ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);
 }
+
+/*int	main(void)
+{
+	char	*str = "Heyyy hello !";
+
+	ft_putendl_fd(str, 1);
+	return (0);
+}*/

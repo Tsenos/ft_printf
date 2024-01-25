@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavre <tfavre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 12:20:10 by timothy           #+#    #+#             */
-/*   Updated: 2022/10/26 14:31:40 by tfavre           ###   ########.fr       */
+/*   Created: 2023/10/31 10:51:31 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/10 12:02:14 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,36 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*dst;
 	unsigned int	i;
+	unsigned int	len;
+	char			*str;
 
-	if (!s)
-		return (0);
-	dst = malloc(sizeof(char) * ft_strlen(s) + 1);
-	if (!dst)
-		return (0);
 	i = 0;
-	while (s[i])
+	len = ft_strlen(s);
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (i < len)
 	{
-		dst[i] = f(i, s[i]);
+		str[i] = (*f)(i, s[i]);
 		i++;
 	}
-	dst[i] = 0;
-	return (dst);
+	str[i] = '\0';
+	return (str);
 }
+
+/*char	ft_func(unsigned int i, char c)
+{
+	printf("func: %c\n", c += i/i);
+	return (c += i/i);
+}
+
+int	main(void)
+{
+	char	*str = "12345";
+	char	(*funcptr)(unsigned int, char);
+
+	funcptr = &ft_func;
+	printf("ft_strmapi: %s\n", ft_strmapi(str, funcptr));
+	return (0);
+}*/

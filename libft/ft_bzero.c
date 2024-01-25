@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timothy <timothy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 09:28:17 by timothy           #+#    #+#             */
-/*   Updated: 2024/01/24 09:55:34 by timothy          ###   ########.fr       */
+/*   Created: 2023/10/25 08:36:58 by timothy           #+#    #+#             */
+/*   Updated: 2024/01/10 12:00:25 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*s2;
-	size_t			i;
+	unsigned char	*str;
 
-	s2 = (unsigned char *)s;
-	i = 0;
-	while (i < n)
-		s2[i++] = 0;
+	str = s;
+	while (n > 0)
+	{
+		*str++ = 0;
+		n--;
+	}
 }
 
-/*int main(int argc, char **argv)
+/*int	main(void)
 {
-	size_t i;
-
-	i = strlen(argv[1]);
-	(void)argc;
-	printf("Src: %s\n", argv[1]);
-	ft_bzero(argv[1], atoi(argv[2]));
-	printf("Dest: %s\n", argv[1]);
-	while (i > 0)
+	int		i;
+	char	str[] = "Hey \0 how are you ?";
+	
+	i = 0;
+	ft_bzero(str, 6);
+	while (i < 19)
 	{
-		printf("%c, ", *argv[1]);
-		argv[1]++;
-		i--;
+		printf("%c| ", str[i]);
+		i++;
 	}
+	//printf("\nNew str: %s\n", str);
 	return (0);
 }*/

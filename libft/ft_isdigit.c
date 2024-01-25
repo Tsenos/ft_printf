@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timothy <timothy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:53:18 by tfavre            #+#    #+#             */
-/*   Updated: 2022/10/26 12:52:29 by timothy          ###   ########.fr       */
+/*   Created: 2023/10/23 11:32:24 by tifavre           #+#    #+#             */
+/*   Updated: 2024/01/10 12:00:40 by tifavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	ft_isdigit(int c)
 {
-	return (c >= '0' && c <= '9');
+	return (c >= 48 && c <= 57);
 }
 
-/*int	main(int argc, char **argv)
+/*#include <stdio.h>
+int	main(void)
 {
-	(void)argc;
-	printf("Result: %d\n", ft_isdigit(argv[1][0]));
+	printf("Result: %i\n", ft_isdigit('1'));
 	return (0);
 }*/

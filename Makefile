@@ -3,17 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: timothy <timothy@student.42.fr>            +#+  +:+       +#+         #
+#    By: tifavre <tifavre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 16:50:43 by timothy           #+#    #+#              #
-#    Updated: 2024/01/14 18:18:10 by timothy          ###   ########.fr        #
+#    Updated: 2024/01/25 11:34:49 by tifavre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = ./libft/libft.a
 
-SRCS =	ft_printf.c		\
-		ft_utils.c		\
+SRCS =	ft_printf.c			\
+		ft_putchari.c		\
+		ft_putstri.c		\
+		ft_putpointi.c		\
+		ft_putnbri.c		\
+		ft_putnbri_uns.c	\
+		ft_puthexi.c
 
 NAME = libftprintf.a
 OBJS = ${SRCS:.c=.o}
